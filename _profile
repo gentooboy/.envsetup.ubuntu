@@ -1,0 +1,41 @@
+echo "~/.profile started!!!"
+
+# if running bash
+#if [ -n "$BASH_VERSION" ]; then
+#    # include .bashrc if it exists
+#    if [ -f "$HOME/.bashrc" ]; then
+#        echo "  include ~/.bashrc"
+#        . "$HOME/.bashrc"
+#    fi
+#fi
+
+case $OSTYPE in
+    darwin*) OS=macosx;;
+    linux*)  OS=ubuntu;;
+esac
+
+envsetup=~/.envsetup.$OS
+
+envsetup_sh=$envsetup/envsetup.sh
+if [ -f $envsetup_sh ]; then
+    . $envsetup_sh
+fi
+
+devsetup_sh=$envsetup/devsetup.sh
+if [ -f $devsetup_sh ]; then
+    . $devsetup_sh
+fi
+
+pathsetup_sh=$envsetup/pathsetup.sh
+if [ -f $pathsetup_sh ]; then
+    . $pathsetup_sh
+fi
+
+if [ $HOSTNAME == "rum" ]; then
+    rumsetup_sh=$envsetup/rumsetup.sh
+    if [ -f $rumsetup_sh ]; then
+        . $rumsetup_sh
+    fi
+fi
+
+echo "~/.profile finished!!!"
