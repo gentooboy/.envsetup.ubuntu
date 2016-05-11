@@ -31,11 +31,4 @@ if [ -f $pathsetup_sh ]; then
     . $pathsetup_sh
 fi
 
-if [ $HOSTNAME == "rum" ]; then
-    rumsetup_sh=$envsetup/rumsetup.sh
-    if [ -f $rumsetup_sh ]; then
-        . $rumsetup_sh
-    fi
-fi
-
 echo "~/.profile finished!!!"

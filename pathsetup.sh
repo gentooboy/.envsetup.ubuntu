@@ -34,6 +34,11 @@ GRAY="\[\e[0;37m\]"
 BLUE="\[\e[0;34m\]"
 END="\[\e[m\]"
 
+if [[ $OSTYPE == darwin* ]]; then
+    source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+    source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+fi
+
 GIT_BRANCH="\`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`"
 GIT_BR_TAG='$(__git_ps1)'
 

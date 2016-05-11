@@ -10,8 +10,20 @@ esac
 
 ENVSETUP=~/.envsetup.$OS
 
-export JAVA_HOME=/usr/lib/jvm/java-6-oracle
-#export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+if [[ $OSTYPE == linux* ]]; then
+    #export JAVA_HOME=/usr/lib/jvm/java-6-oracle
+    #export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+    export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
+    export CPU_THREAD_NUM=$(grep processor /proc/cpuinfo | wc -l | awk '{print $1 * 2}')
+
+    export ANDROID_SDK_PATH=$TOOL_MOUNTED/android-sdk-linux
+    export ANDROID_NDK_PATH=$TOOL_MOUNTED/android-ndk-linux
+    export ANDROID_SWT=$ANDROID_SDK_PATH/tools/lib/x86_64/
+
+    export USE_CCACHE=1
+    export CCACHE_DIR=$TOOL_MOUNTED/ccache
+fi
 
 export COLOR_PY=$ENVSETUP/coloredlogcat.py
 export ENVSETUP_SH=$ENVSETUP/envsetup.sh
@@ -35,13 +47,6 @@ export MAKEOTAWITHLOG_SH=$ENVSETUP/makeotawithlog.sh
 export GTV_REINSTALL_SH=$ENVSETUP/gtv_reinstall.sh
 export DO_ALL_AT_ONCE_SH=$ENVSETUP/do_all_at_once.sh
 
-export ANDROID_SDK_PATH=$TOOL_MOUNTED/android-sdk-linux
-export ANDROID_NDK_PATH=$TOOL_MOUNTED/android-ndk-linux
-export ANDROID_SWT=$ANDROID_SDK_PATH/tools/lib/x86_64/
-export USE_CCACHE=1
-export CCACHE_DIR=$TOOL_MOUNTED/ccache
-
-export CPU_THREAD_NUM=$(grep processor /proc/cpuinfo | wc -l | awk '{print $1 * 2}')
 
 # set the number of open files to be 1024 for android
 ulimit -S -n 1024
