@@ -32,17 +32,8 @@ echo "    refresh .gitconfig"
 
 popd
 
-pushd merge2home
-
-cp -r .vim ~/
-
-popd
-
-pushd ~/.vim/bundle
-
-./install.sh
-
-popd
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
 
 if [ -f ~/.bashrc ]; then
     echo "source ~/.profile" >> ~/.bashrc

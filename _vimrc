@@ -153,33 +153,42 @@ map ,<TAB> :%s/	/    /g<CR>
 " Vundle Setting
 "=========================================================================
 "
-"Brief help
-":BundleList          - list configured bundles
-":BundleInstall(!)    - install(update) bundles
-":BundleSearch(!) foo - search(or refresh cache first) for foo
-":BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+"Plugins:
+Plugin 'taglist.vim'
+Plugin 'The-NERD-tree'
+Plugin 'wesleyche/SrcExpl'
+Plugin 'wesleyche/Trinity'
+Plugin 'gtags.vim'
+"Plugin 'Conque-Shell'
+"Plugin 'DoxygenToolkit.vim'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'a.vim'
+Plugin 'derekwyatt/vim-scala'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-"see :h vundle for more details or wiki for FAQ
-"NOTE: comments after Bundle command are not allowed..
-"
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-"let Vundle manage Vundle
-"required!
-Bundle 'gmarik/vundle'
-
-"My Bundles here:
-Bundle 'taglist.vim'
-Bundle 'The-NERD-tree'
-Bundle 'wesleyche/SrcExpl'
-Bundle 'wesleyche/Trinity'
-Bundle 'gtags.vim'
-Bundle 'Conque-Shell'
-Bundle 'DoxygenToolkit.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'a.vim'
-
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 "=========================================================================
 " Doxygen Setting
